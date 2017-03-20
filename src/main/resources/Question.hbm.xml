@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bj.po.Question" table="d_question" schema="dbteaching" lazy="false">
+        <id name="questionId">
+            <column name="question_id" sql-type="int(11)"/>
+        </id>
+        <property name="questionExam">
+            <column name="question_exam" sql-type="int(11)"/>
+        </property>
+        <property name="examId">
+            <column name="exam_id" sql-type="int(11)"/>
+        </property>
+        <property name="questionMark">
+            <column name="question_mark" sql-type="int(11)"/>
+        </property>
+        <property name="questionHard">
+            <column name="question_hard" sql-type="int(11)"/>
+        </property>
+        <property name="questionText">
+            <column name="question_text" sql-type="varchar(200)" length="200" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

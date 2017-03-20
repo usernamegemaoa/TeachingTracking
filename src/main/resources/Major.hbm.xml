@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bj.po.Major" table="d_major" schema="dbteaching" lazy="false">
+        <id name="majorId">
+            <column name="major_id" sql-type="int(11)"/>
+        </id>
+        <property name="majorName">
+            <column name="major_name" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="majorIntro">
+            <column name="major_intro" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

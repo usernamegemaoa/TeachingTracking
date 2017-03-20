@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bj.po.Subject" table="d_subject" schema="dbteaching" lazy="false">
+        <id name="subjectId">
+            <column name="subject_id" sql-type="int(11)"/>
+        </id>
+        <property name="subjectName">
+            <column name="subject_name" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="subjectIntro">
+            <column name="subject_intro" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="subjectYear">
+            <column name="subject_year" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="subjectTimes">
+            <column name="subject_times" sql-type="int(11)"/>
+        </property>
+        <property name="subjectWork">
+            <column name="subject_work" sql-type="int(11)"/>
+        </property>
+        <property name="MajorId">
+            <column name="major_id" sql-type="int(11)"/>
+        </property>
+        <!--many-to-one name="dMajorByMajorId" class="com.bj.po.Major">
+            <column name="major_id"/>
+        </many-to-one-->
+    </class>
+</hibernate-mapping>
