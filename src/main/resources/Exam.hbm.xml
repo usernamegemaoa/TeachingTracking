@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.bj.po.Exam" table="d_exam" schema="dbteaching">
+    <class name="com.bj.po.Exam" table="d_exam" schema="dbteaching" lazy="false">
         <id name="examId">
             <column name="exam_id" sql-type="int(11)"/>
         </id>

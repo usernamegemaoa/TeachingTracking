@@ -1,35 +1,48 @@
 package com.bj.service;
 
 import com.bj.dao.*;
+import com.bj.po.Exam;
 import com.bj.po.Question;
+import com.bj.po.StuAll;
+import com.bj.po.StuExam;
 import org.junit.Test;
 
 /**
  * Created by Neko on 2017/3/17.
  */
 public class test {
-    private IMajorDao im = new MajorDaoImpl();
-    private ISubjectDao is = new SubjectDaoImpl();
-    private IQuestionDao iq = new QuestionDaoImpl();
+    //private IMajorDao im = new MajorDaoImpl();
+    //private ISubjectDao is = new SubjectDaoImpl();
+    //private IQuestionDao iq = new QuestionDaoImpl();
+    //private IExamDao ie = new ExamDaoImpl();
+    //private IStuAllDao isa = new StuAllDaoImpl();
+    private IStuExamDao ise = new StuExamDaoImpl();
     @Test
     public void test (){
-        //List<Major> mj;
-        //Major major = new Major();
-        //System.out.print(im.queryByMajorid(3).toString());
-        //Subject subject = new Subject();
-       // System.out.println(im.queryByMajorid(3).toString());
-        //System.out.println(is.queryByMajorid(3).toString());
 
-        Question q = new Question();
-        q.setQuestionExam(4);
-        q.setExamId(2);
-        q.setQuestionMark(40);
-        q.setQuestionHard(3);
-        q.setQuestionText("试卷2");
+        StuExam se = new StuExam();
+        se.setStuId(2);
+        se.setQuestionId(1);
+        se.setStexMark(5);
 
-        //iq.add(q);
-        //iq.deleteById(3);
-        System.out.println(iq.queryByExamid(1).toString());
+        //ise.add(se);
+        //ise.deleteById(5);
+        //System.out.println(ise.queryByStuid(2).toString());
+        //System.out.println(ise.queryByQuestionid(2).toString());
+
+
+
+
+
+
+
+
+
+
+        //ie.deleteById(4);
+       // System.out.println(ie.queryByExamid(3).toString());
+       // System.out.println(ie.queryBySubject(3).toString());
+
 
 
         //major.setMajorId(im.queryByMajorname("haligong"));
