@@ -29,22 +29,9 @@ public class test {
         //ise.deleteById(5);
         //System.out.println(ise.queryByStuid(2).toString());
         //System.out.println(ise.queryByQuestionid(2).toString());
-
-
-
-
-
-
-
-
-
-
         //ie.deleteById(4);
        // System.out.println(ie.queryByExamid(3).toString());
        // System.out.println(ie.queryBySubject(3).toString());
-
-
-
         //major.setMajorId(im.queryByMajorname("haligong"));
         //subject.setdMajorByMajorId(major);
        //im.deleteById(4);

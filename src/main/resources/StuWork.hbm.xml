@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bj.po.StuWork" table="d_stu_work" schema="dbteaching" lazy="false">
+        <id name="stwkId">
+            <column name="stwk_id" sql-type="int(11)"/>
+        </id>
+        <property name="stuId">
+            <column name="stu_id" sql-type="int(11)"/>
+        </property>
+        <property name="workId">
+            <column name="work_id" sql-type="int(11)"/>
+        </property>
+        <property name="stwkMark">
+            <column name="stwk_mark" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="stwkText">
+            <column name="stwk_text" sql-type="varchar(200)" length="200" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

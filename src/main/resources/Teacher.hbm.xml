@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.bj.po.Teacher" table="d_teacher" schema="dbteaching" lazy="false">
+        <id name="teaId">
+            <column name="tea_id" sql-type="int(11)"/>
+        </id>
+        <property name="teaName">
+            <column name="tea_name" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="teaSex">
+            <column name="tea_sex" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="majorId">
+            <column name="major_id" sql-type="int(11)"/>
+        </property>
+        <property name="teaPwd">
+            <column name="tea_pwd" sql-type="varchar(50)" length="50"/>
+        </property>
+    </class>
+</hibernate-mapping>
