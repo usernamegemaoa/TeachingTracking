@@ -8,10 +8,11 @@ import java.util.List;
  * Created by Neko on 2017/3/20.
  */
 public interface IExamDao {
-    boolean add(Exam exam);
-    boolean deleteById(int exam_id);
-    boolean update(Exam exam);
-    Exam queryByExamid(int exam_id);
-    List<Exam> queryBySubject(int subject_id);
+    public boolean add(Exam exam);
+    public boolean deleteById(int exam_id);
+    public boolean update(Exam exam);
+    public Exam queryByExamid(int exam_id);
+    public Exam queryByExamonly(int subject_id, String exam_time, String exam_ab);
+    public List<Exam> queryBySubject(int subject_id);
 
 }

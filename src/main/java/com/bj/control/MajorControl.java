@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,23 +32,24 @@ public class MajorControl extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //设置字符集 避免出现乱码
+        request.setCharacterEncoding("utf-8");
         String majorname = request.getParameter("majorname");
         String majorintro = request.getParameter("majorintro");
-        Major mj = new Major();
-        mj.setMajorName(majorname);
-        mj.setMajorIntro(majorintro);
-        RequestDispatcher dispatcher = null;
-        if(im.add(mj)){
-            request.setAttribute("success","添加成功");
-            dispatcher=request.getRequestDispatcher(map.get("success"));
-        }else{
-            request.setAttribute("error","添加失败");
-            dispatcher=request.getRequestDispatcher(map.get("error"));
-        }
+        String method = request.getParameter("method");
+            Major mj = new Major();
+            mj.setMajorName(majorname);
+            mj.setMajorIntro(majorintro);
+            RequestDispatcher dispatcher = null;
+            if(im.add(mj)){
+                request.setAttribute("success","添加成功");
+                dispatcher=request.getRequestDispatcher(map.get("success"));
+            }else{
+                request.setAttribute("error","添加失败");
+                dispatcher=request.getRequestDispatcher(map.get("error"));
+            }
 
-        dispatcher.forward(request,response);
-
-
+            dispatcher.forward(request,response);
 
 
     }

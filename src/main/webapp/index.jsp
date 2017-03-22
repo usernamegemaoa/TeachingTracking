@@ -1,4 +1,6 @@
-<%@page contentType="text/html; charset=UTF-8" language="java" %>
+<%@page contentType="text/html; charset=utf-8" language="java" %>
+
+<!--meta http-equiv="content-type" content="text/html; charset=utf-8" /-->
 <%--@taglib prefix="c" url="http://java.sun.com/jsp/jstl/core"--%>
 <html>
 <body>
@@ -11,7 +13,7 @@
             <input type="button" value="提交" onclick="ok()"><br/>
 </form>
 
-
+<a href="/CreateExam.jsp"><input type="button" value="创建试卷"/></a>
 <%
     if(request.getAttribute("success")!=null){
         out.println("<h1 class = 't1'>");
@@ -31,7 +33,7 @@
     }
 %>
 
-<script type="text/javascript">
+<script type="text/javascript" charset="utf-8">
     function ok() {
         var n = document.getElementById("name");
         var i = document.getElementById("intro");

@@ -87,11 +87,11 @@ public class QuestionDaoImpl implements IQuestionDao {
     }
 
     @Override
-    public Question queryByQuestionexam(int question_id, int question_exam) {
+    public Question queryByQuestionexam(int exam_id, int question_exam) {
         Question question = null;
         try {
             session = sf.openSession();
-            String hql = "from Question as q where q.questionId="+question_id+" and q.questionExam ="+question_exam;//组合查询语句
+            String hql = "from Question as q where q.examId="+exam_id+" and q.questionExam ="+question_exam;//组合查询语句
             Query q = session.createQuery(hql);
             List<Question> li = q.list();
             question = li.get(0);

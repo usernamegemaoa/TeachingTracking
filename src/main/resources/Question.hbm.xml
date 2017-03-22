@@ -21,7 +21,7 @@
             <column name="question_hard" sql-type="int(11)"/>
         </property>
         <property name="questionText">
-            <column name="question_text" sql-type="varchar(200)" length="200" not-null="true"/>
+            <column name="question_text" sql-type="varchar(200)" length="200" />
         </property>
     </class>
 </hibernate-mapping>

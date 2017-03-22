@@ -87,6 +87,23 @@ public class ExamDaoImpl implements IExamDao {
     }
 
     @Override
+    public Exam queryByExamonly(int subject_id, String exam_time, String exam_ab) {
+        Exam exam = null;
+        try {
+            session = sf.openSession();
+            String hql = "from Exam as q where q.subjectId="+subject_id+" and q.examTime ="+"'"+exam_time+"'"+" and q.examAb="+"'"+exam_ab+"'";//组合查询语句
+            Query q = session.createQuery(hql);
+            List<Exam> li = q.list();
+            exam = li.get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return exam;
+    }
+
+    @Override
     public List<Exam> queryBySubject(int subject_id) {
         List<Exam> ex = null;
         try {

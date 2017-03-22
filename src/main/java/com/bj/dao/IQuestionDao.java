@@ -13,7 +13,7 @@ public interface IQuestionDao {
     public boolean update(Question question);
     public Question queryByQuestionid(int question_id);
     //根据试卷编号和卷子中的题号来查询试题
-    public Question queryByQuestionexam(int question_id,int question_exam);
+    public Question queryByQuestionexam(int exam_id,int question_exam);
     public List<Question> queryByExamid(int exam_id);
 
 

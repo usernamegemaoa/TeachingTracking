@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url">jdbc:mysql://localhost:3306/dbTeaching</property>
+    <property name="connection.url">jdbc:mysql://localhost:3306/dbTeaching?useUnicode=true&amp;characterEncoding=utf-8</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="connection.username">root</property>
     <property name="connection.password">root</property>
@@ -12,7 +12,6 @@
       <property name="connection.password">root</property-->
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
-
     <mapping resource="Major.hbm.xml"/>
     <mapping resource="Subject.hbm.xml"/>
     <mapping resource="Exam.hbm.xml"/>
@@ -21,7 +20,6 @@
     <mapping resource="StuExam.hbm.xml"/>
     <mapping resource="Student.hbm.xml"/>
     <mapping resource="Teacher.hbm.xml"/>
-
     <mapping resource="StuLesson.hbm.xml"/>
     <mapping resource="Lesson.hbm.xml"/>
     <mapping resource="StuWork.hbm.xml"/>

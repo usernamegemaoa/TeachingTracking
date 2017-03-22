@@ -1,10 +1,7 @@
 package com.bj.service;
 
 import com.bj.dao.*;
-import com.bj.po.Exam;
-import com.bj.po.Question;
-import com.bj.po.StuAll;
-import com.bj.po.StuExam;
+import com.bj.po.*;
 import org.junit.Test;
 
 /**
@@ -14,16 +11,14 @@ public class test {
     //private IMajorDao im = new MajorDaoImpl();
     //private ISubjectDao is = new SubjectDaoImpl();
     //private IQuestionDao iq = new QuestionDaoImpl();
-    //private IExamDao ie = new ExamDaoImpl();
+    private IExamDao ie = new ExamDaoImpl();
     //private IStuAllDao isa = new StuAllDaoImpl();
-    private IStuExamDao ise = new StuExamDaoImpl();
+    //private IStuExamDao ise = new StuExamDaoImpl();
     @Test
     public void test (){
+        System.out.println(ie.queryByExamonly(6,"2016-10-10","A"));
+        //StuExam se = new StuExam();
 
-        StuExam se = new StuExam();
-        se.setStuId(2);
-        se.setQuestionId(1);
-        se.setStexMark(5);
 
         //ise.add(se);
         //ise.deleteById(5);
