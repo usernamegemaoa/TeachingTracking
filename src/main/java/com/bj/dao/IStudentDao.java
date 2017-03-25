@@ -14,6 +14,7 @@ public interface IStudentDao {
     boolean deleteById(int stu_id);
     boolean update(Student student);
     Student queryByStuid(int stu_id);
+    List<Student> queryByClass_id(int class_id);
     boolean login(int stu_id, String stu_pwd);
 
 }

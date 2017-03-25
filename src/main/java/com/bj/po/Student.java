@@ -11,6 +11,7 @@ public class Student {
     private String stuSex;
     private String stuDate;
     private int majorId;
+    private int classId;
     private String stuInyear;
     private int stuPwd;
 
@@ -69,6 +70,15 @@ public class Student {
     public void setStuPwd(int stuPwd) {
         this.stuPwd = stuPwd;
     }
+
+    public int getClassId() {
+        return classId;
+    }
+
+    public void setClassId(int classId) {
+        this.classId = classId;
+    }
+
 
     @Override
     public boolean equals(Object o) {

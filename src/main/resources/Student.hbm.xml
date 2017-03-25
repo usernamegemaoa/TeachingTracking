@@ -20,6 +20,9 @@
         <property name="majorId">
             <column name="major_id" sql-type="int(11)"/>
         </property>
+        <property name="classId">
+            <column name="class_id" sql-type="int(11)"/>
+        </property>
         <property name="stuInyear">
             <column name="stu_inyear" sql-type="varchar(50)" length="50"/>
         </property>

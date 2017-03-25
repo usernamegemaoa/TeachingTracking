@@ -35,10 +35,8 @@ public class CreateExamServiceImpl implements ICreateExamService {
         return flag;
     }
 
-    @Override
+    @Override//设定难度，分值需要在前端判断必填
     public boolean addQuestionhard(Question question) {
-
-
-        return false;
+        return iQuestionDao.update(question);
     }
 }

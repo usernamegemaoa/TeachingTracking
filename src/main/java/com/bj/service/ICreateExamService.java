@@ -9,5 +9,5 @@ import com.bj.po.Question;
  */
 public interface ICreateExamService {
     boolean addExam(Exam exam);
-    boolean addQuestionhard(Question question);//Update
+    boolean addQuestionhard(Question question);//Update(Question_id,Question_mark,Question_hard)
 }

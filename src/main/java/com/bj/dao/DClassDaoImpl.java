@@ -1,6 +1,6 @@
 package com.bj.dao;
 
-import com.bj.po.Student;
+import com.bj.po.Dclass;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,24 +11,23 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 /**
- * Created by Neko on 2017/3/21.
+ * Created by Neko on 2017/3/25.
  */
-public class StudentDaoImpl implements IStudentDao {
+public class DClassDaoImpl implements IDclassDao {
     private Configuration cfg;
     private Session session;
     private SessionFactory sf;
     private Transaction trans;
-    public StudentDaoImpl(){
+    public DClassDaoImpl(){
         cfg = new Configuration().configure("hibernate.cfg.xml");
         sf = cfg.buildSessionFactory();
     }
-
     @Override
-    public boolean add(Student student) {
+    public boolean add(Dclass dclass) {
         try {
             session = sf.openSession();
             trans = session.beginTransaction();//事务
-            session.save(student);//增加方法 将值添加进数据库
+            session.save(dclass);//增加方法 将值添加进数据库
             trans.commit();
         } catch (HibernateException e) {
             trans.rollback();
@@ -40,12 +39,12 @@ public class StudentDaoImpl implements IStudentDao {
     }
 
     @Override
-    public boolean deleteById(int stu_id) {
+    public boolean delById(int class_id) {
         try {
             session = sf.openSession();
             trans = session.beginTransaction();//事务
-            Student st = (Student) session.load(Student.class,stu_id);//查询要删什么 主键
-            session.delete(st);
+            Dclass dc = (Dclass) session.load(Dclass.class,class_id);//查询要删什么 主键
+            session.delete(dc);
             trans.commit();
         } catch (HibernateException e) {
             trans.rollback();
@@ -57,11 +56,11 @@ public class StudentDaoImpl implements IStudentDao {
     }
 
     @Override
-    public boolean update(Student student) {
+    public boolean update(Dclass dclass) {
         try {
             session = sf.openSession();
             trans = session.beginTransaction();//事务
-            session.saveOrUpdate(student);//增加方法 如果ID存在 则为更新
+            session.saveOrUpdate(dclass);//增加方法 如果ID存在 则为更新
             trans.commit();
         } catch (HibernateException e) {
             trans.rollback();
@@ -73,25 +72,11 @@ public class StudentDaoImpl implements IStudentDao {
     }
 
     @Override
-    public Student queryByStuid(int stu_id) {
-        Student st = null;
+    public List<Dclass> queryBySubjectid(int subject_id) {
+        List<Dclass> list = null;
         try {
             session = sf.openSession();
-            st = (Student) session.load(Student.class,stu_id);
-        } catch (HibernateException e) {
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return st;
-    }
-
-    @Override
-    public List<Student> queryByClass_id(int class_id) {
-        List<Student> list = null;
-        try {
-            session = sf.openSession();
-            String hql = "from Student as q where q.classId="+class_id;//组合查询语句
+            String hql = "from Dclass as q where q.subjectId="+subject_id;//组合查询语句
             Query q = session.createQuery(hql);
             list = q.list();
         } catch (HibernateException e) {
@@ -100,25 +85,39 @@ public class StudentDaoImpl implements IStudentDao {
             session.close();
         }
         return list;
-
     }
 
     @Override
-    public boolean login(int stu_id, String stu_pwd) {
-        boolean flag = false;
-        Student st = null;
+    public Dclass queryByid(int class_id) {
+        Dclass dc = null;
         try {
             session = sf.openSession();
-            st = (Student) session.load(Student.class,stu_id);
-            if(st.getStuId()==stu_id && stu_pwd.equals(st.getStuPwd())){
-                flag=true;
-            }
-
+            String hql = "from Dclass as q where q.classId="+class_id;//组合查询语句
+            Query q = session.createQuery(hql);
+            List<Dclass> li = q.list();
+            dc = li.get(0);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return flag;
+        return dc;
+    }
+
+    @Override
+    public Dclass queryBytoId(int subject_id, int class_num, int class_inyear) {
+        Dclass dc = null;
+        try {
+            session = sf.openSession();
+            String hql = "from Dclass as q where q.subjectId="+subject_id+" and q.classNum ="+class_num+" and q.classInyear="+class_inyear;//组合查询语句
+            Query q = session.createQuery(hql);
+            List<Dclass> li = q.list();
+            dc = li.get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return dc;
     }
 }
