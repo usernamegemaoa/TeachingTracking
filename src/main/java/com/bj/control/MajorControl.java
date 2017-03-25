@@ -41,7 +41,7 @@ public class MajorControl extends HttpServlet{
             mj.setMajorName(majorname);
             mj.setMajorIntro(majorintro);
             RequestDispatcher dispatcher = null;
-            if(im.add(mj)){
+            if(im.addMajor(mj)){
                 request.setAttribute("success","添加成功");
                 dispatcher=request.getRequestDispatcher(map.get("success"));
             }else{

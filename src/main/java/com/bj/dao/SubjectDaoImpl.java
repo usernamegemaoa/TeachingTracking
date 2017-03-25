@@ -53,20 +53,19 @@ public class SubjectDaoImpl implements ISubjectDao {
         return sj;
     }
 
-    public Subject queryByMajorid(int major_id) {
-        Subject sj = null;
+    public List<Subject> queryByMajorid(int major_id) {
+        List<Subject> li = null;
         try {
             session = sf.openSession();
             String hql = "from Subject as sj where sj.MajorId="+major_id;//组合查询语句
             Query q = session.createQuery(hql);
-            List<Subject> li = q.list();
-            sj = li.get(0);
+            li = q.list();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return sj;
+        return li;
     }
 
     public boolean deleteById(int subject_id) {

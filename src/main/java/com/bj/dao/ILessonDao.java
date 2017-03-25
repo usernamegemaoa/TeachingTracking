@@ -13,4 +13,5 @@ public interface ILessonDao {
     boolean update(Lesson lesson);
     List<Lesson> queryByLessonid(int lesson_id);
     List<Lesson> queryBySubjectid(int subject_id);
+    Lesson queryByLessonnum(int subject_id,int lesson_num);
 }

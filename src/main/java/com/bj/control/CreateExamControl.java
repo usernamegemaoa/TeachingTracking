@@ -6,6 +6,8 @@ import com.bj.dao.IQuestionDao;
 import com.bj.dao.QuestionDaoImpl;
 import com.bj.po.Exam;
 import com.bj.po.Question;
+import com.bj.service.CreateExamServiceImpl;
+import com.bj.service.ICreateExamService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,10 +22,9 @@ import java.io.IOException;
  */
 @WebServlet(name = "CreateExamControl", urlPatterns = {"/createexam"})
 public class CreateExamControl extends HttpServlet {
-        public IExamDao ie = new ExamDaoImpl();
+        private ICreateExamService iCreateExamService = new CreateExamServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //设置字符集 避免出现乱码
-        request.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("utf-8"); //设置字符集 避免出现乱码
         int subjectid = Integer.parseInt(request.getParameter("subjectid"));
         String examtime = request.getParameter("examtime");
         String examab = request.getParameter("examab");
@@ -37,18 +38,7 @@ public class CreateExamControl extends HttpServlet {
         exam.setExamMark(exammark);
         //创建一张试卷 成功返回true 同时生成题号
         RequestDispatcher dispatcher = null;
-        boolean flag = ie.add(exam);
-        Exam em = new Exam();
-        em= ie.queryByExamonly(subjectid,examtime,examab);
-        int id = em.getExamId();
-        if(flag){
-            for(int i = 0; i < examnum; i++){
-                IQuestionDao iq = new QuestionDaoImpl();
-                Question q = new Question();
-                q.setQuestionExam(i+1);
-                q.setExamId(id);
-                iq.add(q);
-            }
+        if(iCreateExamService.addExam(exam)){
             request.setAttribute("success","试卷创建成功");
             dispatcher=request.getRequestDispatcher("/CreateExam.jsp");
         }else{

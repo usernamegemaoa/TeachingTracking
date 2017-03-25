@@ -11,7 +11,7 @@ public interface ISubjectDao {
 
     boolean add(Subject subject);
     Subject queryBySubjectid(int subject_id);
-    Subject queryByMajorid(int Major_id);
+    List<Subject> queryByMajorid(int Major_id);
     boolean deleteById(int subject_id);
     List<Subject> queryAll();
     boolean update(Subject subject);

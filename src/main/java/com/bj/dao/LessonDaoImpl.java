@@ -103,4 +103,22 @@ public class LessonDaoImpl implements ILessonDao {
         }
         return le;
     }
+
+    @Override
+    public Lesson queryByLessonnum(int subject_id, int lesson_num) {
+        Lesson le = null;
+        List<Lesson> list = null;
+        try {
+            session = sf.openSession();
+            String hql = "from Lesson as q where q.subjectId="+subject_id+" and q.lessonNum="+lesson_num;//组合查询语句
+            Query q = session.createQuery(hql);
+            list = q.list();
+            le = list.get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return le;
+    }
 }

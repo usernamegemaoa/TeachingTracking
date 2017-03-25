@@ -74,13 +74,14 @@ public class FeedbackDaoImpl implements IFeedbackDao{
     }
 
     @Override
-    public List<Feedback> queryByFeedbackid(int feedback_id) {
-        List<Feedback> fb = null;
+    public Feedback queryByFeedbackid(int feedback_id) {
+        Feedback fb = null;
         try {
             session = sf.openSession();
             String hql = "from Feedback as q where q.feedbackId="+feedback_id;//组合查询语句
             Query q = session.createQuery(hql);
-            fb = q.list();
+            List<Feedback> list = q.list();
+            fb = list.get(0);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
