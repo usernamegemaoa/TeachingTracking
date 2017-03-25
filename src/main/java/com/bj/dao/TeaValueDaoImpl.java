@@ -73,19 +73,21 @@ public class TeaValueDaoImpl implements ITeaValueDao{
     }
 
     @Override
-    public List<TeaValue> queryByValueid(int value_id) {
+    public TeaValue queryByValueid(int value_id) {
         List<TeaValue> tv = null;
+        TeaValue teaValue = null;
         try {
             session = sf.openSession();
             String hql = "from TeaValue as q where q.valueId="+value_id;//组合查询语句
             Query q = session.createQuery(hql);
             tv = q.list();
+            teaValue = tv.get(0);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return tv;
+        return teaValue;
     }
 
     @Override

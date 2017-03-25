@@ -11,7 +11,7 @@ public interface ITeaValueDao {
     boolean add(TeaValue teavalue);
     boolean deleteById(int value_id);
     boolean update(TeaValue teavalue);
-    List<TeaValue> queryByValueid(int value_id);
+    TeaValue queryByValueid(int value_id);
     List<TeaValue> queryByStuid(int stu_id);
     List<TeaValue> queryByTeaid(int tea_id);
 }

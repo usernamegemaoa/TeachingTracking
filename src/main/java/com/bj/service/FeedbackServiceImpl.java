@@ -4,6 +4,8 @@ import com.bj.dao.*;
 import com.bj.po.Feedback;
 import com.bj.po.Lesson;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,6 +15,8 @@ public class FeedbackServiceImpl implements IFeedbackService {
     private IFeedbackDao iFeedbackDao = new FeedbackDaoImpl();
     @Override
     public boolean add(Feedback feedback) {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        feedback.setFeedbackTime(df.format(new Date()));// new Date()为获取当前系统时间
         return iFeedbackDao.add(feedback);
     }
 

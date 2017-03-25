@@ -103,4 +103,22 @@ public class StuLessonDaoImpl implements IStuLessonDao {
         }
         return le;
     }
+
+    @Override
+    public StuLesson queryByStuLesson(int stu_id, int lesson_id) {
+        StuLesson st = null;
+        List<StuLesson> le = null;
+        try {
+            session = sf.openSession();
+            String hql = "from StuLesson as q where q.stuId="+stu_id +" and q.lessonId="+lesson_id;//组合查询语句
+            Query q = session.createQuery(hql);
+            le = q.list();
+            st = le.get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return st;
+    }
 }

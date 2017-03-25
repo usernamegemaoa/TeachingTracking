@@ -13,4 +13,5 @@ public interface IStuLessonDao {
     boolean update(StuLesson stulesson);
     List<StuLesson> queryByStuid(int stu_id);
     List<StuLesson> queryByLessonid(int lesson_id);
+    StuLesson queryByStuLesson(int stu_id, int lesson_id);
 }

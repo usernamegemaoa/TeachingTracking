@@ -12,11 +12,18 @@ public class test {
     //private ISubjectDao is = new SubjectDaoImpl();
     //private IQuestionDao iq = new QuestionDaoImpl();
     private IExamDao ie = new ExamDaoImpl();
+    private IClassManagerService iC = new ClassManagerServiceImpl();
+    private IValueService iv = new ValueServiceImpl();
     //private IStuAllDao isa = new StuAllDaoImpl();
     //private IStuExamDao ise = new StuExamDaoImpl();
     @Test
     public void test (){
-        System.out.println(ie.queryByExamonly(6,"2016-10-10","A"));
+        //System.out.print(iC.queryByClassid(1,1,1).toString());
+        System.out.print(iv.queryByTeaid(1).toString());
+
+        //IStudentDao iStudentDao = new StudentDaoImpl();
+        //System.out.print(iStudentDao.queryByClass_id(2).size());
+        //System.out.println(ie.queryByExamonly(6,"2016-10-10","A"));
         //StuExam se = new StuExam();
 
 
