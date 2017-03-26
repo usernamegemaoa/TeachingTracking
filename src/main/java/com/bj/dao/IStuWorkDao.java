@@ -12,5 +12,5 @@ public interface IStuWorkDao {
     boolean deleteById(int stwk_id);
     boolean update(StuWork stuwork);
     List<StuWork> queryByStuid(int stu_id);
-    List<StuWork> queryByWorkid(int work_id);
+    StuWork queryByStuWorkid(int work_id,int stu_id);
 }

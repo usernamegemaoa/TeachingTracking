@@ -74,11 +74,28 @@ public class WorkDaoImpl implements IWorkDao {
     }
 
     @Override
-    public List<Work> queryByWorkid(int work_id) {
-        List<Work> wk = null;
+    public Work queryByWorkid(int work_id) {
+        Work work = null;
         try {
             session = sf.openSession();
             String hql = "from Work as q where q.workId="+work_id;//组合查询语句
+            Query q = session.createQuery(hql);
+            List<Work> wk = q.list();
+            work = wk.get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return work;
+    }
+
+    @Override
+    public List<Work> queryBySubjectid(int subject_id) {
+        List<Work> wk = null;
+        try {
+            session = sf.openSession();
+            String hql = "from Work as q where q.subjectId="+subject_id;//组合查询语句
             Query q = session.createQuery(hql);
             wk = q.list();
         } catch (HibernateException e) {
@@ -90,18 +107,19 @@ public class WorkDaoImpl implements IWorkDao {
     }
 
     @Override
-    public List<Work> queryByLessonid(int lesson_id) {
-        List<Work> wk = null;
+    public Work queryByLessonid(int lesson_id) {
+        Work work = null;
         try {
             session = sf.openSession();
             String hql = "from Work as q where q.lessonId="+lesson_id;//组合查询语句
             Query q = session.createQuery(hql);
-            wk = q.list();
+            List<Work> wk = q.list();
+            work = wk.get(0);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return wk;
+        return work;
     }
 }

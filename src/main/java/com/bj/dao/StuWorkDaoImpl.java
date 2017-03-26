@@ -90,18 +90,19 @@ public class StuWorkDaoImpl implements IStuWorkDao {
     }
 
     @Override
-    public List<StuWork> queryByWorkid(int work_id) {
-        List<StuWork> wk = null;
+    public StuWork queryByStuWorkid(int work_id,int stu_id) {
+        StuWork stuWork = null;
         try {
             session = sf.openSession();
-            String hql = "from StuWork as q where q.workId="+work_id;//组合查询语句
+            String hql = "from StuWork as q where q.workId="+work_id+" and q.stuId = "+stu_id;//组合查询语句
             Query q = session.createQuery(hql);
-            wk = q.list();
+            List<StuWork> wk = q.list();
+            stuWork = wk.get(0);
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return wk;
+        return stuWork;
     }
 }
