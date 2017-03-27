@@ -103,4 +103,21 @@ public class StuExamDaoImpl implements IStuExamDao {
         }
         return ex;
     }
+
+    @Override
+    public StuExam queryByQuestionid(int question_id,int stu_id) {
+        StuExam stuExam = null;
+        try {
+            session = sf.openSession();
+            String hql = "from StuExam as q where q.questionId="+question_id+" and q.stuId="+stu_id;//组合查询语句
+            Query q = session.createQuery(hql);
+            List<StuExam> ex = q.list();
+            stuExam = ex.get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return stuExam;
+    }
 }

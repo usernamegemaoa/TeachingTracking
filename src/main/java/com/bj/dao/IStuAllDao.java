@@ -11,6 +11,7 @@ public interface IStuAllDao {
     boolean add(StuAll stuall);
     boolean deleteById(int test_id);
     boolean update(StuAll stuall);
+    StuAll queryByStuExamid(int stu_id, int exam_id);
     List<StuAll> queryByStuid(int stu_id);
     List<StuAll> queryByExamid(int exam_id);
 }

@@ -13,4 +13,5 @@ public interface IStuExamDao {
     boolean update(StuExam stuexam);
     List<StuExam> queryByStuid(int stu_id);
     List<StuExam> queryByQuestionid(int question_id);
+    StuExam queryByQuestionid(int question_id,int stu_id);
 }

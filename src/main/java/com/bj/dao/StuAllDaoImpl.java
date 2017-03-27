@@ -73,6 +73,23 @@ public class StuAllDaoImpl implements IStuAllDao {
     }
 
     @Override
+    public StuAll queryByStuExamid(int stu_id, int exam_id) {
+        StuAll stuAll = null;
+        try {
+            session = sf.openSession();
+            String hql = "from StuAll as q where q.stuId="+stu_id+" and q.examId="+exam_id;//组合查询语句
+            Query q = session.createQuery(hql);
+            List<StuAll> ex = q.list();
+            stuAll = ex.get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return stuAll;
+    }
+
+    @Override
     public List<StuAll> queryByStuid(int stu_id) {
         List<StuAll> ex = null;
         try {
