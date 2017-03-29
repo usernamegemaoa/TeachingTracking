@@ -26,7 +26,19 @@
         <a href="/AdminPage/CreateTeacher.jsp"><input type="button" value="教师信息注册"/></a><br/>
     </div>
     <div class="box2">
-        教师信息注册
+
+        <h2>教师信息注册</h2>
+        <form id = "form1" action="/createsubject" method="post" name="subject">
+            姓名:<br/><input type="text" id="name" name="teaname"/><br/>
+            性别:<br/><input type="text" id="sex" name="teasex"/><br/>
+            所属专业:<br/><select id="majorid" name="majorid">
+                        <option value="999">
+                        请认真选择
+                        </option>
+                        </select><br/>
+            密码:<br/><input type="password" id="pwd" name="teapwd"/><br/>
+            <input type="button" value="提交" onclick="ok()"><br/>
+            </form>
     </div>
 </div>
 </body>

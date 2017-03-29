@@ -11,6 +11,7 @@ public interface ISubjectDao {
 
     boolean add(Subject subject);
     Subject queryBySubjectid(int subject_id);
+    Subject querySubject(int major_id,String subject_name,String subject_year);
     List<Subject> queryByMajorid(int Major_id);
     boolean deleteById(int subject_id);
     List<Subject> queryAll();

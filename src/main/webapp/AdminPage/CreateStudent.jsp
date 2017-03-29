@@ -26,7 +26,25 @@
         <a href="/AdminPage/CreateTeacher.jsp"><input type="button" value="教师信息注册"/></a><br/>
     </div>
     <div class="box2">
-        学生信息注册
+        <h2>学生信息注册</h2>
+        <form id = "form1" action="/createstudent" method="post" name="major">
+            姓名:<br/><input type="text" id="name" name="stuname"/><br/>
+            性别:<br/><input type="text" id="sex" name="stusex"/><br/>
+            出生日期:<br/><input type="text" id="date" name="studate"/><br/>
+            所属专业:<br/><select id="majorid" name="majorid">
+                    <option value="999">
+                    请认真选择
+                    </option>
+                    </select><br/>
+            班级:<br/><select id="classid" name="classid">
+                    <option value="999">
+                    请认真选择
+                    </option>
+                    </select><br/>
+            入学年份:<br/><input type="text" id="inyear" name="stuinyear"/><br/>
+            密码:<br/><input type="password" id="pwd" name="stupwd"/><br/>
+            <input type="button" value="提交" onclick="ok()"><br/>
+        </form>
     </div>
 </div>
 </body>

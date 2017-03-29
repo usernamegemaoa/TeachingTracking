@@ -1,9 +1,7 @@
 package com.bj.service;
 
-import com.bj.dao.IMajorDao;
-import com.bj.dao.ISubjectDao;
-import com.bj.dao.MajorDaoImpl;
-import com.bj.dao.SubjectDaoImpl;
+import com.bj.dao.*;
+import com.bj.po.Lesson;
 import com.bj.po.Major;
 import com.bj.po.Subject;
 
@@ -15,6 +13,7 @@ import java.util.List;
 public class MajorServiceImpl implements IMajorService {
     private IMajorDao iMajorDao = new MajorDaoImpl();
     private ISubjectDao iSubjectDao = new SubjectDaoImpl();
+    private ILessonDao iLessonDao = new LessonDaoImpl();
 
     @Override
     public boolean addMajor(Major major) {
@@ -23,7 +22,24 @@ public class MajorServiceImpl implements IMajorService {
 
     @Override
     public boolean addSubject(Subject subject) {
-        return iSubjectDao.add(subject);
+        boolean flag = false;
+        flag = iSubjectDao.add(subject);
+        Subject subject1 = new Subject();
+        //添加后反查 科目ID
+        subject1 = iSubjectDao.querySubject(subject.getMajorId(),subject.getSubjectName(),subject.getSubjectYear());
+        int id = subject1.getSubjectId();//科目ID
+        if(flag){
+            for(int i = 0;i<subject.getSubjectTimes();i++){
+                Lesson lesson = new Lesson();
+                lesson.setSubjectId(id);
+                lesson.setLessonNum(i+1);
+                flag = iLessonDao.add(lesson);
+                if(i+1==subject.getSubjectTimes()){
+                    flag = true;
+                }
+            }
+        }
+        return flag;
     }
 
     @Override

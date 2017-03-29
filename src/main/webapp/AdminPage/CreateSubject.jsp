@@ -48,9 +48,9 @@
     </div>
     <div class="box2">
         <h2>创建科目</h2>
-        <form id = "form1" action="/subject" method="post" name="subject">
+        <form id = "form1" action="/createsubject" method="post" name="subject">
             科目名称:<br/><input type="text" id="name" name="subjectname"/><br/>
-            所属专业:<br/><select id="majorid">
+            所属专业:<br/><select id="majorid" name="majorid">
                     <option value="999">
                      请认真选择
                     </option>
