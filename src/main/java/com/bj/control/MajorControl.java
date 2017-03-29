@@ -24,8 +24,8 @@ import java.util.Map;
  */
 @WebServlet(name = "MajorControl", urlPatterns = {"/major"},
         initParams = {
-                @WebInitParam(name="success",value = "/index.jsp"),
-                @WebInitParam(name="error",value = "/index.jsp")
+                @WebInitParam(name="success",value = "/AdminPage/CreateMajor.jsp"),
+                @WebInitParam(name="error",value = "/AdminPage/CreateMajor.jsp")
         })
 public class MajorControl extends HttpServlet{
         private IMajorService im = new MajorServiceImpl();
@@ -36,7 +36,7 @@ public class MajorControl extends HttpServlet{
         request.setCharacterEncoding("utf-8");
         String majorname = request.getParameter("majorname");
         String majorintro = request.getParameter("majorintro");
-        String method = request.getParameter("method");
+        //String method = request.getParameter("method");
             Major mj = new Major();
             mj.setMajorName(majorname);
             mj.setMajorIntro(majorintro);

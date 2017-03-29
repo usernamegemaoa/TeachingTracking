@@ -10,7 +10,7 @@
 <form id = "form1" action="major" method="post" name="createmajor">
     专业名称<input type="text" id="name" name="majorname"/><br/>
     专业简介<input type="text" id="intro" name="majorintro"/><br/>
-            <input type="button" value="提交" onclick="ok()"><br/>
+    <input type="button" value="提交" onclick="ok()"><br/>
 </form>
 
 <a href="/CreateExam.jsp"><input type="button" value="创建试卷"/></a>
