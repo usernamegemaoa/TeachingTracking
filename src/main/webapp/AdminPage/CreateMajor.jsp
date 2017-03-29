@@ -22,14 +22,14 @@
 管理员XXX
 <div id="container">
     <div class="box1">
-        <a href="/AdminPage/CreateMajor.jsp"><input type="button" value="创建专业" onclick="ok()"/></a><br/><br/>
-        <a href="/AdminPage/CreateSubject.jsp"><input type="button" value="创建科目" onclick="ok()"/></a><br/><br/>
-        <a href="/AdminPage/CreateStudent.jsp"><input type="button" value="学生信息注册" onclick="ok()"/></a><br/><br/>
-        <a href="/AdminPage/CreateTeacher.jsp"><input type="button" value="教师信息注册" onclick="ok()"/></a><br/>
+        <a href="/AdminPage/CreateMajor.jsp"><input type="button" value="创建专业"/></a><br/><br/>
+        <a href="/AdminPage/CreateSubject.jsp"><input type="button" value="创建科目"/></a><br/><br/>
+        <a href="/AdminPage/CreateStudent.jsp"><input type="button" value="学生信息注册"/></a><br/><br/>
+        <a href="/AdminPage/CreateTeacher.jsp"><input type="button" value="教师信息注册"/></a><br/>
     </div>
     <div class="box2">
         <h2>创建专业</h2>
-        <form id = "form1" action="/major" method="post" name="major">
+        <form id = "form1" action="/createmajor" method="post" name="major">
             专业名称:<br/><input type="text" id="name" name="majorname"/><br/>
             专业简介:<br/><textarea id="intro" name="majorintro" style="width:200px;height:80px;">这里写内容</textarea><br/>
                     <input type="button" value="提交" onclick="ok()"><br/>
@@ -62,7 +62,7 @@
         var n = document.getElementById("name");
         var i = document.getElementById("intro");
         if(n.value.length<0 || n.value ==""){
-            alert("用户名不能为空！");
+            alert("专业名不能为空！");
             return;
         }
         document.all.major.submit();

@@ -20,10 +20,10 @@
 管理员XXX
 <div id="container">
     <div class="box1">
-        <a href="/AdminPage/CreateMajor.jsp"><input type="button" value="创建专业" onclick="ok()"/></a><br/><br/>
-        <a href="/AdminPage/CreateSubject.jsp"><input type="button" value="创建科目" onclick="ok()"/></a><br/><br/>
-        <a href="/AdminPage/CreateStudent.jsp"><input type="button" value="学生信息注册" onclick="ok()"/></a><br/><br/>
-        <a href="/AdminPage/CreateTeacher.jsp"><input type="button" value="教师信息注册" onclick="ok()"/></a><br/>
+        <a href="/AdminPage/CreateMajor.jsp"><input type="button" value="创建专业"/></a><br/><br/>
+        <a href="/AdminPage/CreateSubject.jsp"><input type="button" value="创建科目"/></a><br/><br/>
+        <a href="/AdminPage/CreateStudent.jsp"><input type="button" value="学生信息注册"/></a><br/><br/>
+        <a href="/AdminPage/CreateTeacher.jsp"><input type="button" value="教师信息注册"/></a><br/>
     </div>
     <div class="box2">
         教师信息注册

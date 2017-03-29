@@ -42,6 +42,11 @@
       <artifactId>gson</artifactId>
       <version>2.7</version>
     </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.12</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>com.bj</finalName>

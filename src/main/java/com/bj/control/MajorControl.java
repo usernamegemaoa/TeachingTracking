@@ -15,53 +15,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Neko on 2017/3/18.
+ * 处理AJAX请求
  */
-@WebServlet(name = "MajorControl", urlPatterns = {"/major"},
-        initParams = {
-                @WebInitParam(name="success",value = "/AdminPage/CreateMajor.jsp"),
-                @WebInitParam(name="error",value = "/AdminPage/CreateMajor.jsp")
-        })
+@WebServlet(name = "MajorControl", urlPatterns = {"/major"})
 public class MajorControl extends HttpServlet{
-        private IMajorService im = new MajorServiceImpl();
-
+        private IMajorService iMajorService = new MajorServiceImpl();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //设置字符集 避免出现乱码
-        request.setCharacterEncoding("utf-8");
-        String majorname = request.getParameter("majorname");
-        String majorintro = request.getParameter("majorintro");
-        //String method = request.getParameter("method");
-            Major mj = new Major();
-            mj.setMajorName(majorname);
-            mj.setMajorIntro(majorintro);
-            RequestDispatcher dispatcher = null;
-            if(im.addMajor(mj)){
-                request.setAttribute("success","添加成功");
-                dispatcher=request.getRequestDispatcher(map.get("success"));
-            }else{
-                request.setAttribute("error","添加失败");
-                dispatcher=request.getRequestDispatcher(map.get("error"));
-            }
+        String result = iMajorService.queryMajorall().toString();
+        System.out.print(result);
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html");
 
-            dispatcher.forward(request,response);
-
-
+        PrintWriter out = response.getWriter();
+        out.println(result);
+        out.flush();
+        out.close();
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        this.doGet(request,response);
     }
-    private Map<String,String> map = new HashMap<String,String>();
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        map.put("success",config.getInitParameter("success"));
-        map.put("error",config.getInitParameter("error"));
 
-    }
 }
