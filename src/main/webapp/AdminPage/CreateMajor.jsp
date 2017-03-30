@@ -16,10 +16,8 @@
     #container .box1{width:200px;height:700px;float: left;background: url("/material/BG_1.jpg");}
     #container .box2{margin-left: 15px;width:685px;height:700px;float:left;background: url("/material/BG_1.jpg");}
 </style>
-
 <body>
-
-管理员XXX
+管理员页面
 <div id="container">
     <div class="box1">
         <a href="/AdminPage/CreateMajor.jsp"><input type="button" value="创建专业"/></a><br/><br/>

@@ -13,7 +13,7 @@ public class Student {
     private int majorId;
     private int classId;
     private String stuInyear;
-    private int stuPwd;
+    private String stuPwd;
 
     public int getStuId() {
         return stuId;
@@ -63,11 +63,11 @@ public class Student {
         this.stuInyear = stuInyear;
     }
 
-    public int getStuPwd() {
+    public String getStuPwd() {
         return stuPwd;
     }
 
-    public void setStuPwd(int stuPwd) {
+    public void setStuPwd(String stuPwd) {
         this.stuPwd = stuPwd;
     }
 
@@ -106,7 +106,7 @@ public class Student {
         result = 31 * result + (stuDate != null ? stuDate.hashCode() : 0);
         result = 31 * result + majorId;
         result = 31 * result + (stuInyear != null ? stuInyear.hashCode() : 0);
-        result = 31 * result + stuPwd;
+        result = 31 * result + (stuPwd != null ? stuPwd.hashCode() : 0);
         return result;
     }
 

@@ -56,7 +56,7 @@ public class CreateSubjectControl extends HttpServlet{
         }
         dispatcher.forward(req,resp);
 
-        System.out.print(subject.toString());
+        //System.out.print(subject.toString());
 
     }
 

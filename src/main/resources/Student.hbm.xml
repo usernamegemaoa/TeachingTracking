@@ -27,7 +27,7 @@
             <column name="stu_inyear" sql-type="varchar(50)" length="50"/>
         </property>
         <property name="stuPwd">
-            <column name="stu_pwd" sql-type="int(11)"/>
+            <column name="stu_pwd" sql-type="varchar(50)" length="50"/>
         </property>
     </class>
 </hibernate-mapping>

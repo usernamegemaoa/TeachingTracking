@@ -30,7 +30,7 @@ public class MajorControl extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String result = iMajorService.queryMajorall().toString();
-        System.out.print(result);
+        //System.out.print(result);
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html");
 

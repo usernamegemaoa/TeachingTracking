@@ -128,7 +128,6 @@
       <data-type>int(11)|0</data-type>
     </column>
     <column id="48" parent="11" name="lesson_date">
-      <mandatory>1</mandatory>
       <data-type>varchar(50)|0</data-type>
     </column>
     <key id="49" parent="11" name="PRIMARY">
@@ -303,7 +302,7 @@
     </column>
     <column id="92" parent="18" name="stu_pwd">
       <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+      <data-type>varchar(50)|0</data-type>
     </column>
     <key id="93" parent="18" name="PRIMARY">
       <columns>stu_id</columns>

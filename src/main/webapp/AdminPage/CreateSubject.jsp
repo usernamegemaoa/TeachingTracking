@@ -9,7 +9,6 @@
 <html>
 <head>
     <title>Title</title>
-
     <script src="jquery-1.11.0.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
@@ -38,7 +37,7 @@
     #container .box2{margin-left: 15px;width:685px;height:700px;float:left;background: url("/material/BG_1.jpg");}
 </style>
 <body>
-管理员XXX
+管理员页面
 <div id="container">
     <div class="box1">
         <a href="/AdminPage/CreateMajor.jsp"><input type="button" value="创建专业"/></a><br/><br/>

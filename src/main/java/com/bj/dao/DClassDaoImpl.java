@@ -72,11 +72,11 @@ public class DClassDaoImpl implements IDclassDao {
     }
 
     @Override
-    public List<Dclass> queryBySubjectid(int subject_id) {
+    public List<Dclass> queryByMajorid(int major_id) {
         List<Dclass> list = null;
         try {
             session = sf.openSession();
-            String hql = "from Dclass as q where q.subjectId="+subject_id;//组合查询语句
+            String hql = "from Dclass as q where q.subjectId="+major_id;//组合查询语句
             Query q = session.createQuery(hql);
             list = q.list();
         } catch (HibernateException e) {

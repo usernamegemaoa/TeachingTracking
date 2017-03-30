@@ -1,5 +1,7 @@
 package com.bj.po;
 
+import com.google.gson.Gson;
+
 /**
  * Created by Neko on 2017/3/25.
  */
@@ -63,5 +65,9 @@ public class Dclass {
         result = 31 * result + (subjectId != null ? subjectId.hashCode() : 0);
         result = 31 * result + (classNum != null ? classNum.hashCode() : 0);
         return result;
+    }
+    @Override
+    public String toString(){
+        return new Gson().toJson(this);
     }
 }
