@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>教师信息注册</title>
-    <script src="jquery-1.11.0.js" type="text/javascript"></script>
+    <script src="../js/jquery-1.11.0.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             $.ajax({

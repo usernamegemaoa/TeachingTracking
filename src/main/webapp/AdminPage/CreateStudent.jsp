@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Title</title>
-    <script src="jquery-1.11.0.js" type="text/javascript"></script>
+    <script src="../js/jquery-1.11.0.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             $("#majorid").change(function () {

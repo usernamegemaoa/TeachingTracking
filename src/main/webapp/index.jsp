@@ -13,7 +13,7 @@
     <input type="button" value="提交" onclick="ok()"><br/>
 </form>
 
-<a href="/CreateExam.jsp"><input type="button" value="创建试卷"/></a>
+<a href="/TeacherPage/CreateExam.jsp"><input type="button" value="创建试卷"/></a>
 <%
     if(request.getAttribute("success")!=null){
         out.println("<h1 class = 't1'>");
