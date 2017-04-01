@@ -1,5 +1,7 @@
 package com.bj.po;
 
+import com.google.gson.Gson;
+
 /**
  * Created by Neko on 2017/3/21.
  */
@@ -63,5 +65,9 @@ public class Work {
         result = 31 * result + lessonId;
         result = 31 * result + (workContent != null ? workContent.hashCode() : 0);
         return result;
+    }
+    @Override
+    public String toString(){
+        return new Gson().toJson(this);
     }
 }

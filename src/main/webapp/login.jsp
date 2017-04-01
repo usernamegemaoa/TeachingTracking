@@ -13,14 +13,15 @@
 <style> body{background-color:#C0C0C0} </style>
 <body>
 <div style="left: 530px; position: absolute; top: 125px;">
-    <img src="/material/head_bg.jpg" /></div><!--Title图片-->
+    <img src="material/head_bg.jpg" /></div><!--Title图片-->
 
 <div style="left: 650px; position: absolute; top: 250px;">
     <h2>教学质量跟踪系统</h2>
-<form id = "form1" action="login" method="post" name="login">
+<form id = "form1" action="/user" method="post" name="login">
     用户名<input type="text" id="name" name="name"/><br/>
     密码<input type="text" id="pwd" name="pwd"/><br/>
-    <select name="log">
+    <select id="key" name="key">
+        <option value="999">请选择登录方式</option>
         <option value="0">学生</option>
         <option value="1">教师/管理员</option>
     </select>
@@ -33,8 +34,13 @@
     function ok() {
         var n = document.getElementById("name");
         var i = document.getElementById("pwd");
+        var k = document.getElementById("key");
         if(n.value.length<0 || n.value ==""){
             alert("用户名不能为空！");
+            return;
+        }
+        if(k.value=="999"){
+            alert("请选择登录方式！");
             return;
         }
         document.all.login.submit();

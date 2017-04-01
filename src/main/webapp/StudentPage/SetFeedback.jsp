@@ -21,10 +21,10 @@
 反馈问题
 <div id="container">
     <div class="box1">
-        <a href="/StudentPage/SearchHomework.jsp"><input type="button" value="查询作业"/></a><br/><br/>
-        <a href="/StudentPage/StudentStatus.jsp"><input type="button" value="学习状态查询"/></a><br/><br/>
-        <a href="/StudentPage/SetValue.jsp"><input type="button" value="教师打分"/></a><br/><br/>
-        <a href="/StudentPage/SetFeedback.jsp"><input type="button" value="反馈问题"/></a><br/>
+        <a href="../StudentPage/SearchHomework.jsp"><input type="button" value="查询作业"/></a><br/><br/>
+        <a href="../StudentPage/StudentStatus.jsp"><input type="button" value="学习状态查询"/></a><br/><br/>
+        <a href="../StudentPage/SetValue.jsp"><input type="button" value="教师打分"/></a><br/><br/>
+        <a href="../StudentPage/SetFeedback.jsp"><input type="button" value="反馈问题"/></a><br/>
     </div>
     <div class="box2">
         <!--h2>创建专业</h2>

@@ -18,21 +18,25 @@
 </style>
 <body>
 <h1>学生</h1>
-教师打分
 <div id="container">
     <div class="box1">
-        <a href="/StudentPage/SearchHomework.jsp"><input type="button" value="查询作业"/></a><br/><br/>
-        <a href="/StudentPage/StudentStatus.jsp"><input type="button" value="学习状态查询"/></a><br/><br/>
-        <a href="/StudentPage/SetValue.jsp"><input type="button" value="教师打分"/></a><br/><br/>
-        <a href="/StudentPage/SetFeedback.jsp"><input type="button" value="反馈问题"/></a><br/>
+        <a href="../StudentPage/SearchHomework.jsp"><input type="button" value="查询作业"/></a><br/><br/>
+        <a href="../StudentPage/StudentStatus.jsp"><input type="button" value="学习状态查询"/></a><br/><br/>
+        <a href="../StudentPage/SetValue.jsp"><input type="button" value="教师打分"/></a><br/><br/>
+        <a href="../StudentPage/SetFeedback.jsp"><input type="button" value="反馈问题"/></a><br/>
     </div>
     <div class="box2">
-        <!--h2>创建专业</h2>
-        <form id = "form1" action="/createmajor" method="post" name="major">
-            专业名称:<br/><input type="text" id="name" name="majorname"/><br/>
-            专业简介:<br/><textarea id="intro" name="majorintro" style="width:200px;height:80px;">这里写内容</textarea><br/>
+        <h2>教师评价</h2>
+        <form id = "form1" action="/setvalue" method="post" name="setvalue">
+            (注：每部分评分以100分计算，本评价不实名制)<br/>
+            你的学号:<br/><input type="text" id="stuid" name="stuid"/><br/><br/>
+            教师工号:<br/><input type="text" id="teaid" name="teaid"/><br/><br/>
+            打分项1:教学准备充分，内容充实，态度严谨。<br/><input type="text" id="value1" name="value1"/><br/>
+            打分项2:讲课重点突出，详略得当，讲解难点深入浅出。<br/><input type="text" id="value2" name="value2"/><br/>
+            打分项3:富有启发性，引导学生积极思维。<br/><input type="text" id="value3" name="value3"/><br/>
+            你还有什么意见：<br/><input type="text" id="valuecontent" name="valuecontent"/><br/>
             <input type="button" value="提交" onclick="ok()"><br/>
-        </form-->
+        </form>
         <%
             if(request.getAttribute("success")!=null){
                 out.println("<h1 class = 't1'>");
@@ -54,4 +58,23 @@
     </div>
 </div>
 </body>
+<script type="text/javascript" charset="utf-8">
+    function ok() {
+        var n = document.getElementById("stuid");
+        var i = document.getElementById("teaid");
+        var m = document.getElementById("value1");
+        var k = document.getElementById("value2");
+        var j = document.getElementById("value3");
+        var l = document.getElementById("valuecontent");
+        if(n.value.length<0 || n.value ==""){
+            alert("请输入学号！");
+            return;
+        }
+        if(i.value.length<0 || i.value ==""){
+            alert("请教师工号！");
+            return;
+        }
+        document.all.setvalue.submit();
+    }
+</script>
 </html>
