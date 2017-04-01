@@ -114,7 +114,9 @@ public class WorkDaoImpl implements IWorkDao {
             String hql = "from Work as q where q.lessonId="+lesson_id;//组合查询语句
             Query q = session.createQuery(hql);
             List<Work> wk = q.list();
-            work = wk.get(0);
+            if(wk.size()!= 0) {
+                work = wk.get(0);
+            }
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {

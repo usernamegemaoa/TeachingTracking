@@ -97,7 +97,7 @@
     #container .box2{margin-left: 15px;width:685px;height:700px;float:left;background: url("/material/BG_1.jpg");}
 </style>
 <body>
-<h1>学生XXX</h1>
+<h1>学生</h1>
 <div id="container">
     <div class="box1">
         <a href="../StudentPage/SearchHomework.jsp"><input type="button" value="查询作业"/></a><br/><br/>
@@ -157,15 +157,15 @@
         var n = document.getElementById("majorid");
         var i = document.getElementById("subjectid");
         var m = document.getElementById("lessonnum");
-        if(n.value.length<0 || n.value ==""){
+        if(n.value.length<0 || n.value =="999"){
             alert("请选择专业！");
             return;
         }
-        if(i.value.length<0 || i.value ==""){
+        if(i.value.length<0 || i.value =="999"){
             alert("请选择科目！");
             return;
         }
-        if(m.value.length<0 || m.value ==""){
+        if(m.value.length<0 || m.value =="999"){
             alert("请选择课时！");
             return;
         }

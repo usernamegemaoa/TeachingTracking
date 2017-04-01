@@ -9,6 +9,54 @@
 <html>
 <head>
     <title>学习状态查询</title>
+    <script src="../js/jquery-1.11.0.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#majorid").change(function () {
+                var major = "";
+                $("#majorid option").each(function () {
+                    if(this.selected){
+                        major = this.value;
+                    }
+                });
+                $.ajax({
+                    data:"majorid="+major,
+                    dataType:"text json",
+                    url:"/subject",
+                    type:"post",
+                    success:function (txt) {
+                        $("#subjectid option").remove();
+                        var option ="<option value='999'>请认真选择</option>";
+
+                        $("#subjectid").append(option);
+                        $(txt).each(function (i) {
+                            option ="<option value='"+txt[i].subjectId +"'>"+txt[i].subjectName+"</option>"
+                            $("#subjectid").append(option);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                data:"",
+                dataType:"text json",
+                url:"/major",
+                type:"post",
+                success:function (txt) {
+                    $("#majorid option").remove();
+                    var option ="<option value='999'>请认真选择</option>";
+                    $("#majorid").append(option);
+                    $(txt).each(function (i) {
+                        option ="<option value='"+txt[i].majorId +"'>"+txt[i].majorName+"</option>"
+                        $("#majorid").append(option);
+                    });
+                }
+            });
+        });
+    </script>
 </head>
 <style type="text/css">
     div{margin:0;padding:0}
@@ -18,7 +66,6 @@
 </style>
 <body>
 <h1>学生</h1>
-学习状态查询
 <div id="container">
     <div class="box1">
         <a href="../StudentPage/SearchHomework.jsp"><input type="button" value="查询作业"/></a><br/><br/>
@@ -27,12 +74,17 @@
         <a href="../StudentPage/SetFeedback.jsp"><input type="button" value="反馈问题"/></a><br/>
     </div>
     <div class="box2">
-        <!--h2>创建专业</h2>
-        <form id = "form1" action="/createmajor" method="post" name="major">
-            专业名称:<br/><input type="text" id="name" name="majorname"/><br/>
-            专业简介:<br/><textarea id="intro" name="majorintro" style="width:200px;height:80px;">这里写内容</textarea><br/>
+        <h2>学习状态查询</h2>
+        <form id = "form1" action="/studentstatus" method="post" name="studentstatus">
+            专业：<select id="majorid" name="major">
+            <option value="999">请认真选择</option>
+            </select>
+            科目：<select id="subjectid" name="subject">
+            <option value="999">请认真选择</option>
+            </select><br/>
+            你的学号:<br/><input type="text" id="stuid" name="stuid"/><br/>
             <input type="button" value="提交" onclick="ok()"><br/>
-        </form-->
+        </form>
         <%
             if(request.getAttribute("success")!=null){
                 out.println("<h1 class = 't1'>");
@@ -55,4 +107,24 @@
 </div>
 
 </body>
+<script type="text/javascript" charset="utf-8">
+    function ok() {
+        var n = document.getElementById("majorid");
+        var i = document.getElementById("subjectid");
+        var z = document.getElementById("stuid");
+        if(n.value.length<0 || n.value =="999"){
+            alert("请选择专业！");
+            return;
+        }
+        if(i.value.length<0 || i.value =="999"){
+            alert("请选择科目！");
+            return;
+        }
+        if(z.value.length<0 || z.value ==""){
+            alert("请输入你的学号！");
+            return;
+        }
+        document.all.studentstatus.submit();
+    }
+</script>
 </html>

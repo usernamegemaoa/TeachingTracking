@@ -30,8 +30,10 @@ public class SearchHomeworkControl extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         String subjectid = req.getParameter("subject");
         String lessonnum = req.getParameter("lesson");
-        String result = iHomeworkService.queryBySubject(Integer.valueOf(subjectid),Integer.valueOf(lessonnum)).toString();
-
+        String result = null;
+        if(iHomeworkService.queryBySubject(Integer.valueOf(subjectid),Integer.valueOf(lessonnum))!= null) {
+            result = iHomeworkService.queryBySubject(Integer.valueOf(subjectid), Integer.valueOf(lessonnum)).toString();
+        }
         RequestDispatcher dispatcher = null;
         if(result != null){
             req.setAttribute("success",result);
