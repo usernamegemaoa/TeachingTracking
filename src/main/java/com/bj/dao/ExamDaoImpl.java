@@ -94,7 +94,9 @@ public class ExamDaoImpl implements IExamDao {
             String hql = "from Exam as q where q.subjectId="+subject_id+" and q.examTime ="+"'"+exam_time+"'"+" and q.examAb="+"'"+exam_ab+"'";//组合查询语句
             Query q = session.createQuery(hql);
             List<Exam> li = q.list();
-            exam = li.get(0);
+            if(li.size()>0){
+                exam = li.get(0);
+            }
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {

@@ -1,8 +1,13 @@
 package com.bj.control;
 
+import com.bj.dao.ExamDaoImpl;
+import com.bj.dao.IExamDao;
 import com.bj.dao.IQuestionDao;
 import com.bj.dao.QuestionDaoImpl;
+import com.bj.po.Exam;
 import com.bj.po.Question;
+import com.bj.service.CreateExamServiceImpl;
+import com.bj.service.ICreateExamService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,38 +20,59 @@ import java.io.IOException;
 /**
  * Created by Neko on 2017/3/22.
  */
-@WebServlet(name = "SetHardControl", urlPatterns = {"/SetHard"})
+@WebServlet(name = "SetHardControl", urlPatterns = {"/sethard"})
 public class SetHardControl extends HttpServlet {
-    public IQuestionDao iq = new QuestionDaoImpl();
+    private ICreateExamService iCreateExamService = new CreateExamServiceImpl();
+    private IExamDao iExamDao = new ExamDaoImpl();
+    private IQuestionDao iQuestionDao = new QuestionDaoImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int questionexam = Integer.parseInt(request.getParameter("questionexam"));
-        int examid = Integer.parseInt(request.getParameter("examid"));
-        int questionmark = Integer.parseInt(request.getParameter("questionmark"));
-        int questionhard = Integer.parseInt(request.getParameter("questionhard"));
-        String questiontext = request.getParameter("questiontext");
-        Question q =new Question();
-        Question query = new Question();
-        q.setQuestionExam(questionexam);
-        q.setExamId(examid);
-        q.setQuestionMark(questionmark);
-        q.setQuestionHard(questionhard);
-        q.setQuestionText(questiontext);
-        //查找出题号Question_id 便于Update
-        query = iq.queryByQuestionexam(examid,questionexam);
-        q.setQuestionId(query.getQuestionId());
-        //更新试卷信息 添加分值和难度
-        RequestDispatcher dispatcher = null;
-        if(iq.update(q)){
-            request.setAttribute("success","添加成功");
-            dispatcher=request.getRequestDispatcher("/SetHard.jsp");
+        request.setCharacterEncoding("utf-8");
+        String majorid = request.getParameter("major");
+        String subjectid = request.getParameter("subject");
+        String examtime = request.getParameter("examtime");
+        String examab = request.getParameter("examab");
+        String questionexam = request.getParameter("questionexam");
+        String questionhard = request.getParameter("questionhard");
+        String questionmark = request.getParameter("questionmark");
 
+        //取得Examid
+        boolean flag_e = false;
+        Exam e = null;
+        e = iExamDao.queryByExamonly(Integer.valueOf(subjectid),examtime,examab);
+
+        Question question = new Question();
+        question.setQuestionExam(Integer.valueOf(questionexam));
+        question.setQuestionMark(Integer.valueOf(questionmark));
+        question.setQuestionHard(Integer.valueOf(questionhard));
+        if(e != null){
+            question.setExamId(e.getExamId());
+            flag_e = true;
         }
-        else{
-            request.setAttribute("error","添加失败");
-            dispatcher=request.getRequestDispatcher("/SetHard.jsp");
+        //查找出题号Question_id 便于Update
+        Question query = null;
+        if(flag_e){//确认examid存在 再继续查询
+            query = iQuestionDao.queryByQuestionexam(e.getExamId(),Integer.valueOf(questionexam));
+            question.setQuestionId(query.getQuestionId());
+        }
+
+        RequestDispatcher dispatcher = null;
+        if(query!=null && flag_e){
+            //更新试卷信息 添加分值和难度
+            if(iCreateExamService.addQuestionhard(question)){
+                request.setAttribute("success","添加成功");
+                dispatcher=request.getRequestDispatcher("/TeacherPage/SetHard.jsp");
+
+            }else{
+                request.setAttribute("error","添加失败");
+                dispatcher=request.getRequestDispatcher("/TeacherPage/SetHard.jsp");
+            }
+        }else{
+            request.setAttribute("error","没有该题目");
+            dispatcher=request.getRequestDispatcher("/TeacherPage/SetHard.jsp");
         }
 
         dispatcher.forward(request,response);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

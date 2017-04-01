@@ -33,11 +33,13 @@ public class FeedbackServiceImpl implements IFeedbackService {
     //这里lesson_num是第几节课的意思
     @Override
     public List<Feedback> queryByLessonid(int subject_id, int lesson_num) {
-        Lesson lesson = new Lesson();
+        Lesson lesson = null;
         ILessonDao iLessonDao = new LessonDaoImpl();
         lesson = iLessonDao.queryByLessonnum(subject_id,lesson_num);
         List<Feedback> list = null;
-        list = iFeedbackDao.queryByLessonid(lesson.getLessonId());
+        if(lesson != null){
+            list = iFeedbackDao.queryByLessonid(lesson.getLessonId());
+        }
         return list;
     }
 }

@@ -94,7 +94,9 @@ public class QuestionDaoImpl implements IQuestionDao {
             String hql = "from Question as q where q.examId="+exam_id+" and q.questionExam ="+question_exam;//组合查询语句
             Query q = session.createQuery(hql);
             List<Question> li = q.list();
-            question = li.get(0);
+            if(li.size()>0){
+                question = li.get(0);
+            }
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {

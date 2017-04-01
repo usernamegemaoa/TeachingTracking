@@ -17,7 +17,7 @@
     #container .box2{margin-left: 15px;width:685px;height:700px;float:left;background: url("/material/BG_1.jpg");}
 </style>
 <body>
-欢迎教师XXX
+欢迎教师
 <div id="container">
     <div class="box1">
         <a href="../TeacherPage/CreateExam.jsp"><input type="button" value="创建试卷"/></a><br><br>
@@ -33,7 +33,7 @@
         <a href="../teacher.jsp"><input type="button" value="返回主页"/></a><br>
     </div>
     <div class="box2">
-        创建试卷页面
+        <h2>创建试卷页面</h2>
         <form id = "form1" action="/createexam" method="post" name="createexam">
             科目编号<input type="text" id="id" name="subjectid"/><br/>
             试卷年份<input type="text" id="time" name="examtime"/><br/>

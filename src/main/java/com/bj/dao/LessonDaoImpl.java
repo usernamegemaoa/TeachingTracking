@@ -113,7 +113,9 @@ public class LessonDaoImpl implements ILessonDao {
             String hql = "from Lesson as q where q.subjectId="+subject_id+" and q.lessonNum="+lesson_num;//组合查询语句
             Query q = session.createQuery(hql);
             list = q.list();
-            le = list.get(0);
+            if(list.size()>0){
+                le = list.get(0);
+            }
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {

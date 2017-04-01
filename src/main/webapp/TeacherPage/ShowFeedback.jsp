@@ -9,6 +9,82 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="../js/jquery-1.11.0.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#majorid").change(function () {
+                var major = "";
+                $("#majorid option").each(function () {
+                    if(this.selected){
+                        major = this.value;
+                    }
+                });
+                $.ajax({
+                    data:"majorid="+major,
+                    dataType:"text json",
+                    url:"/subject",
+                    type:"post",
+                    success:function (txt) {
+                        $("#subjectid option").remove();
+                        var option ="<option value='999'>请认真选择</option>";
+
+                        $("#subjectid").append(option);
+                        $(txt).each(function (i) {
+                            option ="<option value='"+txt[i].subjectId +"'>"+txt[i].subjectName+"</option>"
+                            $("#subjectid").append(option);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#subjectid").change(function () {
+                var subjectid = "";
+                $("#subjectid option").each(function () {
+                    if(this.selected){
+                        subjectid = this.value;
+                    }
+                });
+                $.ajax({
+                    data:"subjectid="+subjectid,
+                    dataType:"text json",
+                    url:"/lesson",
+                    type:"post",
+                    success:function (txt) {
+                        $("#lessonnum option").remove();
+                        var option ="<option value='999'>请认真选择</option>";
+
+                        $("#lessonnum").append(option);
+                        $(txt).each(function (i) {
+                            option ="<option value='"+txt[i].lessonNum +"'>"+txt[i].lessonNum+"</option>"
+                            $("#lessonnum").append(option);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                data:"",
+                dataType:"text json",
+                url:"/major",
+                type:"post",
+                success:function (txt) {
+                    $("#majorid option").remove();
+                    var option ="<option value='999'>请认真选择</option>";
+                    $("#majorid").append(option);
+                    $(txt).each(function (i) {
+                        option ="<option value='"+txt[i].majorId +"'>"+txt[i].majorName+"</option>"
+                        $("#majorid").append(option);
+                    });
+                }
+            });
+        });
+    </script>
 </head>
 <style type="text/css">
     div{margin:0;padding:0}
@@ -17,7 +93,7 @@
     #container .box2{margin-left: 15px;width:685px;height:700px;float:left;background: url("/material/BG_1.jpg");}
 </style>
 <body>
-欢迎教师XXX
+欢迎教师
 <div id="container">
     <div class="box1">
         <a href="../TeacherPage/CreateExam.jsp"><input type="button" value="创建试卷"/></a><br><br>
@@ -33,10 +109,18 @@
         <a href="../teacher.jsp"><input type="button" value="返回主页"/></a><br>
     </div>
     <div class="box2">
-        查看反馈页面
+        <h2>查看反馈页面</h2>
         <form id = "form1" action="/showfeedback" method="post" name="showfeedback">
-            科目编号<input type="text" id="id" name="subjectid"/><br/>
-            <input type="submit" value="提交" onclick="ok()"><br/>
+            专业：<select id="majorid" name="major">
+            <option value="999">请认真选择</option>
+            </select><br/>
+            科目：<select id="subjectid" name="subject">
+            <option value="999">请认真选择</option>
+            </select><br/>
+            课时：<select id="lessonnum" name="lesson">
+            <option value="999">请认真选择</option>
+            </select><br/>
+            <input type="button" value="查询" onclick="ok()"><br/>
         </form>
         <%
             if(request.getAttribute("success")!=null){
@@ -58,21 +142,26 @@
         %>
     </div>
 </div>
-<!--script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
     function ok() {
-        var n = document.getElementById("id");
-        var t = document.getElementById("time");
-        var a = document.getElementById("ab");
-        var u = document.getElementById("num");
-        var m = document.getElementById("mark");
-
-        if(n.value.length<0 || n.value ==""){
-            alert("专业名称不能为空！");
+        var n = document.getElementById("majorid");
+        var t = document.getElementById("subjectid");
+        var a = document.getElementById("lessonnum");
+        if(n.value.length<0 || n.value =="999"){
+            alert("请选择专业！");
             return;
         }
-        document.all.createexam.submit();
+        if(t.value.length<0 || t.value =="999"){
+            alert("请选择科目！");
+            return;
+        }
+        if(a.value.length<0 || a.value =="999"){
+            alert("请选择课时！");
+            return;
+        }
+        document.all.showfeedback.submit();
     }
-</script-->
+</script>
 
 </body>
 </html>
