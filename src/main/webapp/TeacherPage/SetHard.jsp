@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>难度设定</title>
     <script src="../js/jquery-1.11.0.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {

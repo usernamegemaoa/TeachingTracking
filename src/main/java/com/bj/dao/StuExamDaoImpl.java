@@ -112,7 +112,9 @@ public class StuExamDaoImpl implements IStuExamDao {
             String hql = "from StuExam as q where q.questionId="+question_id+" and q.stuId="+stu_id;//组合查询语句
             Query q = session.createQuery(hql);
             List<StuExam> ex = q.list();
-            stuExam = ex.get(0);
+            if(ex.size()>0){
+                stuExam = ex.get(0);
+            }
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
