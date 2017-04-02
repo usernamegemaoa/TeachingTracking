@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by Neko on 2017/4/2.
  */
-@WebServlet(name = "AnalyzeWorkControl" , urlPatterns = {"/analyzehomework"})
+@WebServlet(name = "AnalyzeHomeworkControl" , urlPatterns = {"/analyzehomework"})
 public class AnalyzeHomeworkControl extends HttpServlet {
 
     private IHomeworkService iHomeworkService = new HomeworkServiceImpl();

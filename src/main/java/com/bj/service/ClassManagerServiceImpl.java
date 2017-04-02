@@ -51,9 +51,10 @@ public class ClassManagerServiceImpl implements IClassManagerService {
             }
         }
         double work_rate =  (double)stat_man/(double)class_man * 100;//出勤率
-        ratelist.add(0,stat_man);
-        ratelist.add(1,class_man);
-        ratelist.add(2,(int)work_rate);
+        ratelist.add((int)work_rate);
+        ratelist.add(stat_man);
+        ratelist.add(class_man);
+
         return ratelist;
     }
 }

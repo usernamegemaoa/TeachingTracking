@@ -1,67 +1,42 @@
 package com.bj.control;
 
-import com.bj.service.HomeworkServiceImpl;
-import com.bj.service.IHomeworkService;
+import com.bj.service.ClassManagerServiceImpl;
+import com.bj.service.IClassManagerService;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Neko on 2017/4/2.
  */
-@WebServlet(name = "AnalyzeWorkControl" , urlPatterns = {"/analyzework"})
+@WebServlet(name = "AnalyzeWorkControl" ,urlPatterns = {"/analyzeworkctrl"})
 public class AnalyzeWorkControl extends HttpServlet {
+    private IClassManagerService iClassManagerService = new ClassManagerServiceImpl();
 
-    private IHomeworkService iHomeworkService = new HomeworkServiceImpl();
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.doGet(req, resp);
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         String majorid = req.getParameter("major");
         String subjectid = req.getParameter("subject");
-        String classnum = req.getParameter("classid");
-        String classinyear = req.getParameter("classinyear");
-
-        List<String> list = null;
-        //回传信息格式为(目前作业总数，学号，交的作业总数，作业完成情况作业完成，分隔符$,按顺序回传)
-        list = iHomeworkService.queryWorkStat(Integer.valueOf(majorid),Integer.valueOf(subjectid), Integer.valueOf(classnum),Integer.valueOf(classinyear));
-
+        String classid = req.getParameter("classid");
+        String lessonid = req.getParameter("lesson");
+        List<Integer> list = null;
+        //查询某班级某节课出勤情况 返回值(出勤率，出勤人数，班级总人数)
+        list = iClassManagerService.queryByClassid(Integer.valueOf(subjectid),Integer.valueOf(classid),Integer.valueOf(lessonid));
         RequestDispatcher dispatcher = null;
-
-        if(list != null){
-            List<String> result = new ArrayList<String>();
-
-            for(int i = 0; i<list.size(); i++){
-
-                result.add("目前作业总数："+list.get(i));
-                result.add("学号："+list.get(i+1));
-                result.add("交的作业总数："+list.get(i+2));
-                result.add("作业完成情况：");
-                //分隔符$
-                for(int j = 1 ;j <list.size() ;j++){
-                    if(list.get(i+2+j).equals("$")){//为分隔符
-                        i = i+2+j+1;
-                       return;
-                    }else{
-                        result.add(list.get(i+2+j));
-                    }
-                }
+        if(list!=null){
+            String result = "出勤率："+list.get(0)+"%"+" 出勤人数："+list.get(1)+"班级总人数："+list.get(2);
+            if(list.get(2)!=0){
+                req.setAttribute("success",result);
+            }else {
+                req.setAttribute("success",result+" 请确认您输入的信息是否正确！");
             }
 
-            req.setAttribute("success",result.toString());
             dispatcher=req.getRequestDispatcher("/TeacherPage/AnalyzeWork.jsp");
         }
         else{
@@ -72,8 +47,7 @@ public class AnalyzeWorkControl extends HttpServlet {
 
     }
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doGet(req,resp);
     }
 }

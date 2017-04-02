@@ -25,7 +25,7 @@ public class CreateExamControl extends HttpServlet {
         private ICreateExamService iCreateExamService = new CreateExamServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8"); //设置字符集 避免出现乱码
-        int subjectid = Integer.parseInt(request.getParameter("subjectid"));
+        int subjectid = Integer.parseInt(request.getParameter("subject"));
         String examtime = request.getParameter("examtime");
         String examab = request.getParameter("examab");
         int examnum = Integer.parseInt(request.getParameter("examnum"));
@@ -40,10 +40,10 @@ public class CreateExamControl extends HttpServlet {
         RequestDispatcher dispatcher = null;
         if(iCreateExamService.addExam(exam)){
             request.setAttribute("success","试卷创建成功");
-            dispatcher=request.getRequestDispatcher("/CreateExam.jsp");
+            dispatcher=request.getRequestDispatcher("/TeacherPage/CreateExam.jsp");
         }else{
             request.setAttribute("error","试卷创建失败");
-            dispatcher=request.getRequestDispatcher("/CreateExam.jsp");
+            dispatcher=request.getRequestDispatcher("/TeacherPage/CreateExam.jsp");
         }
 
         dispatcher.forward(request,response);

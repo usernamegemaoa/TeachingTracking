@@ -91,10 +91,10 @@
             </select><br/>
             试卷年份：<br/><input type="text" id="examtime" name="examtime"/><br/>
             AB卷：<br/><input type="text" id="examab" name="examab"/><br/>
-            试卷题号：<br/><input type="text" id="questionexam" name="questionexam"/><br/>
-            难度：(以10分满计算)<br/><input type="text" id="hard" name="questionhard"/><br/>
-            分值：<br/><input type="text" id="mark" name="questionmark"/><br/>
-            <input type="submit" value="提交" onclick="ok()"><br/>
+            试卷题号：<br/><input type="text" id="questionexam" name="questionexam" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
+            难度：(以10分满计算)<br/><input type="text" id="hard" name="questionhard" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
+            分值：<br/><input type="text" id="mark" name="questionmark" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
+            <input type="button" value="提交" onclick="ok()"><br/>
         </form>
         <%
             if(request.getAttribute("success")!=null){
@@ -118,8 +118,8 @@
 </div>
 <script type="text/javascript" charset="utf-8">
     function ok() {
-        var m = document.getElementById("major");
-        var s = document.getElementById("subject");
+        var m = document.getElementById("majorid");
+        var s = document.getElementById("subjectid");
         var e = document.getElementById("examtime");
         var a = document.getElementById("examab");
         var q = document.getElementById("questionexam");
@@ -137,8 +137,8 @@
             alert("请输入试卷年份！");
             return;
         }
-        if(a.value.length<0 || a.value ==""){
-            alert("请选择ab卷！");
+        if(a.value !="" &&a.value !="a" &&a.value !="A" &&a.value !="b"&&a.value !="B"){
+            alert("请输入ab卷或格式输入不正确！");
             return;
         }
         if(q.value.length<0 || q.value ==""){

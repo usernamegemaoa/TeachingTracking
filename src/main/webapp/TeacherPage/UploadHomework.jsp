@@ -120,8 +120,8 @@
             课时：<select id="lessonnum" name="lesson">
             <option value="999">请认真选择</option>
             </select><br/>
-            学生学号：<input type="text" id="stuid" name="stuid"/><br/>
-            作业成绩：<input type="text" id="stumark" name="stumark"/><br/>
+            学生学号：<input type="text" id="stuid" name="stuid" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
+            作业成绩：<input type="text" id="stumark" name="stumark" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
             评语(按需填写)：<br/><textarea id="stutext" name="stutext" style="width:200px;height:80px;">这里写内容</textarea><br/>
             <input type="button" value="提交" onclick="ok()"><br/>
         </form>

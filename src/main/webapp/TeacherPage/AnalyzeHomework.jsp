@@ -125,7 +125,7 @@
             班级：<select id="classid" name="classid">
             <option value="999">请认真选择</option>
         </select><br/>
-            年份(例如 2015届)：<br><input type="text" id="classinyear" name="classinyear">届<br/>
+            年份(例如 2015届)：<br><input type="text" id="classinyear" name="classinyear" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">届<br/>
             <input type="button" value="查询" onclick="ok()"><br/>
         </form>
         <%

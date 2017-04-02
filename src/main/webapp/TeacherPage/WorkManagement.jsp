@@ -120,7 +120,7 @@
             课时：<select id="lessonnum" name="lesson">
             <option value="999">请认真选择</option>
             </select><br/>
-            学生学号：<input type="text" id="stuid" name="stuid"/><br/>
+            学生学号：<input type="text" id="stuid" name="stuid" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
             <input type="button" value="该学生出勤" onclick="ok()"><br/>
         </form>
         <%

@@ -63,8 +63,36 @@
                         $("#classid").append(option);
                         $(txt).each(function (i) {
                             //alert(option);
-                            option ="<option value='"+txt[i].classNum +"'>"+txt[i].classNum+"</option>"
+                            option ="<option value='"+txt[i].classId +"'>"+txt[i].classNum+"</option>"
                             $("#classid").append(option);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#subjectid").change(function () {
+                var subjectid = "";
+                $("#subjectid option").each(function () {
+                    if(this.selected){
+                        subjectid = this.value;
+                    }
+                });
+                $.ajax({
+                    data:"subjectid="+subjectid,
+                    dataType:"text json",
+                    url:"/lesson",
+                    type:"post",
+                    success:function (txt) {
+                        $("#lessonnum option").remove();
+                        var option ="<option value='999'>请认真选择</option>";
+
+                        $("#lessonnum").append(option);
+                        $(txt).each(function (i) {
+                            option ="<option value='"+txt[i].lessonId +"'>"+txt[i].lessonNum+"</option>"
+                            $("#lessonnum").append(option);
                         });
                     }
                 });
@@ -115,7 +143,7 @@
     </div>
     <div class="box2">
         <h2>出勤情况分析页面</h2>
-        <form id = "form1" action="/analyzework" method="post" name="analyzework">
+        <form id = "form1" action="/analyzeworkctrl" method="post" name="AnalyzeWorkControl">
             专业：<select id="majorid" name="major">
             <option value="999">请认真选择</option>
             </select><br/>
@@ -125,7 +153,9 @@
             班级：<select id="classid" name="classid">
             <option value="999">请认真选择</option>
             </select><br/>
-            年份(例如 2015届)：<br><input type="text" id="classinyear" name="classinyear">届<br/>
+            课时：<select id="lessonnum" name="lesson">
+            <option value="999">请认真选择</option>
+            </select><br/>
             <input type="submit" value="查询" onclick="ok()"><br/>
         </form>
         <%
@@ -153,8 +183,7 @@
         var m = document.getElementById("majorid");
         var s = document.getElementById("subjectid");
         var l = document.getElementById("classid");
-        var y = document.getElementById("classinyear");
-
+        var n = document.getElementById("lessonnum");
         if(m.value.length<0 || m.value =="999"){
             alert("请选择专业！");
             return;
@@ -167,12 +196,12 @@
             alert("请选择班级！");
             return;
         }
-        if(l.value.length<0 || l.value ==""){
-            alert("届数不能为空！");
+        if(n.value.length<0 || n.value =="999"){
+            alert("请选择课时！");
             return;
         }
 
-        document.all.analyzework.submit();
+        document.all.AnalyzeWorkControl.submit();
     }
 </script-->
 
