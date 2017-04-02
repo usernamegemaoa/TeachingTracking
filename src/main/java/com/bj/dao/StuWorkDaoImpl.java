@@ -97,7 +97,9 @@ public class StuWorkDaoImpl implements IStuWorkDao {
             String hql = "from StuWork as q where q.workId="+work_id+" and q.stuId = "+stu_id;//组合查询语句
             Query q = session.createQuery(hql);
             List<StuWork> wk = q.list();
-            stuWork = wk.get(0);
+            if(wk.size()>0){
+                stuWork = wk.get(0);
+            }
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {

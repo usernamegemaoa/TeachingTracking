@@ -103,7 +103,8 @@
         <a href="../StudentPage/SearchHomework.jsp"><input type="button" value="查询作业"/></a><br/><br/>
         <a href="../StudentPage/StudentStatus.jsp"><input type="button" value="学习状态查询"/></a><br/><br/>
         <a href="../StudentPage/SetValue.jsp"><input type="button" value="教师打分"/></a><br/><br/>
-        <a href="../StudentPage/SetFeedback.jsp"><input type="button" value="反馈问题"/></a><br/>
+        <a href="../StudentPage/SetFeedback.jsp"><input type="button" value="反馈问题"/></a><br/><br/>
+        <a href="../student.jsp"><input type="button" value="返回主页"/></a><br>
     </div>
     <div class="box2">
         <h2>查询作业</h2>

@@ -112,7 +112,9 @@ public class DClassDaoImpl implements IDclassDao {
             String hql = "from Dclass as q where q.subjectId="+subject_id+" and q.classNum ="+class_num+" and q.classInyear="+class_inyear;//组合查询语句
             Query q = session.createQuery(hql);
             List<Dclass> li = q.list();
-            dc = li.get(0);
+            if(li.size()>0){
+                dc = li.get(0);
+            }
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
