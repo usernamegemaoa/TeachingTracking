@@ -56,7 +56,7 @@
                     </option>
                     </select><br/>
             授课学年:<br/><input type="text" id="year" name="subjectyear"/><br/>
-            课时次数:<br/><input type="text" id="times" name="subjecttimes"/><br/>
+            课时次数:<br/><input type="text" id="times" name="subjecttimes" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
             科目简介:<br/><textarea id="intro" name="subjectintro" style="width:200px;height:80px;">这里写内容</textarea><br/>
             <input type="button" value="提交" onclick="ok()"><br/>
         </form>

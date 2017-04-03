@@ -19,7 +19,7 @@
     #container .box2{margin-left: 15px;width:685px;height:700px;float:left;background: url("/material/BG_1.jpg");}
 </style>
 <body>
-        欢迎教师XXX
+        欢迎教师
         <div id="container">
             <div class="box1">
                 <a href="TeacherPage/CreateExam.jsp"><input type="button" value="创建试卷"/></a><br><br>
@@ -40,6 +40,24 @@
                     <%//显示当前时间
                         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
                         out.println(df.format(new Date()));// new Date()为获取当前系统时间
+                    %>
+                    <%
+                        if(request.getAttribute("success")!=null){
+                            out.println("<h1 class = 't1'>");
+                    %>
+                    <%=request.getAttribute("success").toString()%>
+                    <%
+                            out.println("</h1>");
+                        }
+                    %>
+                    <%
+                        if(request.getAttribute("error")!=null){
+                            out.println("<h1 class = 't1'>");
+                    %>
+                    <%=request.getAttribute("error").toString()%>
+                    <%
+                            out.println("</h1>");
+                        }
                     %>
                 </h2>
             </div>

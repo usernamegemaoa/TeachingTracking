@@ -30,7 +30,7 @@
 
                         $("#classid").append(option);
                         $(txt).each(function (i) {
-                            alert(option);
+                            //alert(option);
                             option ="<option value='"+txt[i].classId +"'>"+txt[i].classNum+"</option>"
                             $("#classid").append(option);
                         });

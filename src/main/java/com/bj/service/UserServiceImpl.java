@@ -25,9 +25,12 @@ public class UserServiceImpl implements IUserService {
     public boolean loginStudent(int id, String pwd) {
         boolean flag = false;
         Student st = ist.queryByStuid(id);
-        if(pwd.equals(st.getStuPwd())){
-            flag = true;
+        if(st!=null){
+            if(pwd.equals(st.getStuPwd())){
+                flag = true;
+            }
         }
+
         return flag;
     }
 

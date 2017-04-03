@@ -18,7 +18,7 @@
     #container .box2{margin-left: 15px;width:685px;height:700px;float:left;background: url("/material/BG_1.jpg");}
 </style>
 <body>
-        管理员页面XXX
+        管理员页面
         <div id="container">
             <div class="box1">
                 <a href="/AdminPage/CreateMajor.jsp"><input type="button" value="创建专业" onclick="ok()"/></a><br/><br/>
@@ -34,6 +34,24 @@
                     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
                     out.println(df.format(new Date()));// new Date()为获取当前系统时间
                 %>
+                    <%
+                        if(request.getAttribute("success")!=null){
+                            out.println("<h1 class = 't1'>");
+                    %>
+                    <%=request.getAttribute("success").toString()%>
+                    <%
+                            out.println("</h1>");
+                        }
+                    %>
+                    <%
+                        if(request.getAttribute("error")!=null){
+                            out.println("<h1 class = 't1'>");
+                    %>
+                    <%=request.getAttribute("error").toString()%>
+                    <%
+                            out.println("</h1>");
+                        }
+                    %>
                 </h2>
             </div>
         </div>

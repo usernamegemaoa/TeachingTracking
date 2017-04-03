@@ -156,7 +156,7 @@
             课时：<select id="lessonnum" name="lesson">
             <option value="999">请认真选择</option>
             </select><br/>
-            <input type="submit" value="查询" onclick="ok()"><br/>
+            <input type="button" value="查询" onclick="ok()"><br/>
         </form>
         <%
             if(request.getAttribute("success")!=null){
@@ -178,7 +178,7 @@
         %>
     </div>
 </div>
-<!--script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
     function ok() {
         var m = document.getElementById("majorid");
         var s = document.getElementById("subjectid");
@@ -203,7 +203,7 @@
 
         document.all.AnalyzeWorkControl.submit();
     }
-</script-->
+</script>
 
 </body>
 </html>

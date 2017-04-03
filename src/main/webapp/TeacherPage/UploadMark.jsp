@@ -85,13 +85,13 @@
         <form id = "form1" action="/uploadmark" method="post" name="uploadmark">
             专业：<select id="majorid" name="major">
             <option value="999">请认真选择</option>
-            </select>
+            </select><br/>
             科目：<select id="subjectid" name="subject">
             <option value="999">请认真选择</option>
             </select><br/>
-            课时：<select id="lessonnum" name="lesson">
+            <!--课时：<select id="lessonnum" name="lesson">
             <option value="999">请认真选择</option>
-            </select><br/>
+            </select><br/> -->
             试卷年份<input type="text" id="time" name="examtime"/><br/>
             AB卷<input type="text" id="ab" name="examab"/><br/>
             学号<input type="text" id="stuid" name="stuid" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
@@ -106,7 +106,7 @@
             小题8：<input type="text" id="mark8" name="mark8" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
             小题9：<input type="text" id="mark9" name="mark9" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
             小题10：<input type="text" id="mark10" name="mark10" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
-            <input type="submit" value="提交分数" onclick="ok()"><br/>
+            <input type="button" value="提交分数" onclick="ok()"><br/>
             </form>
         <%
             if(request.getAttribute("success")!=null){
@@ -161,8 +161,52 @@
             alert("请输入ab卷或格式输入不正确！");
             return;
         }
-        if(d.value.length<0 || d.value ==""){
+        if(k.value.length<0 || k.value ==""){
             alert("请输入学号！");
+            return;
+        }
+        if(m1.value.length<0 || m1.value ==""){
+            alert("请输入成绩，不存在的题目填入0！");
+            return;
+        }
+        if(m2.value.length<0 || m2.value ==""){
+            alert("请输入成绩，不存在的题目填入0！");
+            return;
+        }
+        if(m3.value.length<0 || m3.value ==""){
+            alert("请输入成绩，不存在的题目填入0！");
+            return;
+        }
+        if(m4.value.length<0 || m4.value ==""){
+            alert("请输入成绩，不存在的题目填入0！");
+            return;
+        }
+        if(m5.value.length<0 || m5.value ==""){
+            alert("请输入成绩，不存在的题目填入0！");
+            return;
+        }
+        if(m1.value.length<0 || m1.value ==""){
+            alert("请输入成绩，不存在的题目填入0！");
+            return;
+        }
+        if(m6.value.length<0 || m6.value ==""){
+            alert("请输入成绩，不存在的题目填入0！");
+            return;
+        }
+        if(m7.value.length<0 || m7.value ==""){
+            alert("请输入成绩，不存在的题目填入0！");
+            return;
+        }
+        if(m8.value.length<0 || m8.value ==""){
+            alert("请输入成绩，不存在的题目填入0！");
+            return;
+        }
+        if(m9.value.length<0 || m9.value ==""){
+            alert("请输入成绩，不存在的题目填入0！");
+            return;
+        }
+        if(m10.value.length<0 || m10.value ==""){
+            alert("请输入成绩，不存在的题目填入0！");
             return;
         }
         document.all.uploadmark.submit();

@@ -18,14 +18,33 @@
 <div style="left: 650px; position: absolute; top: 250px;">
     <h2>教学质量跟踪系统</h2>
 <form id = "form1" action="/user" method="post" name="login">
-    用户名<input type="text" id="name" name="name"/><br/>
-    密码<input type="text" id="pwd" name="pwd"/><br/>
+    学号/工号：<input type="text" id="name" name="name" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" /><br/>
+    密码：<input type="password" id="pwd" name="pwd"/><br/>
     <select id="key" name="key">
         <option value="999">请选择登录方式</option>
         <option value="0">学生</option>
         <option value="1">教师/管理员</option>
     </select>
     <input type="button" value="登录" onclick="ok()"><br/>
+    <%
+        if(request.getAttribute("success")!=null){
+            out.println("<h1 class = 't1'>");
+    %>
+    <%=request.getAttribute("success").toString()%>
+    <%
+            out.println("</h1>");
+        }
+    %>
+    <%
+        if(request.getAttribute("error")!=null){
+            out.println("<h1 class = 't1'>");
+    %>
+    <%=request.getAttribute("error").toString()%>
+    <%
+            out.println("</h1>");
+        }
+    %>
+
 </form>
 </div>
 

@@ -30,12 +30,12 @@
         <h2>教师评价</h2>
         <form id = "form1" action="/setvalue" method="post" name="setvalue">
             (注：每部分评分以100分计算，本评价不实名制)<br/>
-            你的学号:<br/><input type="text" id="stuid" name="stuid"/><br/><br/>
-            教师工号:<br/><input type="text" id="teaid" name="teaid"/><br/><br/>
-            打分项1:教学准备充分，内容充实，态度严谨。<br/><input type="text" id="value1" name="value1"/><br/>
-            打分项2:讲课重点突出，详略得当，讲解难点深入浅出。<br/><input type="text" id="value2" name="value2"/><br/>
-            打分项3:富有启发性，引导学生积极思维。<br/><input type="text" id="value3" name="value3"/><br/>
-            你还有什么意见：<br/><input type="text" id="valuecontent" name="valuecontent"/><br/>
+            你的学号:<br/><input type="text" id="stuid" name="stuid" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/><br/>
+            教师工号:<br/><input type="text" id="teaid" name="teaid" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/><br/>
+            打分项1:教学准备充分，内容充实，态度严谨。<br/><input type="text" id="value1" name="value1" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
+            打分项2:讲课重点突出，详略得当，讲解难点深入浅出。<br/><input type="text" id="value2" name="value2" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
+            打分项3:富有启发性，引导学生积极思维。<br/><input type="text" id="value3" name="value3" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br/>
+            你还有什么意见：<br/><input type="text" id="valuecontent" name="valuecontent" /><br/>
             <input type="button" value="提交" onclick="ok()"><br/>
         </form>
         <%

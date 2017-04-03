@@ -116,7 +116,7 @@
             <option value="999">请认真选择</option>
             </select>
             <br>
-            你的学号：<br><input type="text" id="stuid" name="stuid"><br>
+            你的学号：<br><input type="text" id="stuid" name="stuid" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/><br>
             问题:<br/><textarea id="content" name="feedbackcontent" style="width:200px;height:80px;">这里写内容</textarea><br/>
             <input type="button" value="提交" onclick="ok()"><br/>
         </form>
