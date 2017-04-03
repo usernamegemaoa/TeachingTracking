@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored ="false" %>
 <html>
 <head>
     <title>教师信息注册</title>
@@ -37,7 +39,7 @@
     #container .box2{margin-left: 15px;width:685px;height:700px;float:left;background: url("/material/BG_1.jpg");}
 </style>
 <body>
-管理员页面
+你好，管理员:${sessionScope.user==null?"null":sessionScope.user.teaName}<br>
 <div id="container">
     <div class="box1">
         <a href="/AdminPage/CreateMajor.jsp"><input type="button" value="创建专业"/></a><br/><br/>

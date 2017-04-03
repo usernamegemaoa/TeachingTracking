@@ -12,7 +12,7 @@
 <%@ page isELIgnored ="false" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>教学质量跟踪系统</title>
 </head>
 <style type="text/css">
     div{margin:0;padding:0}
@@ -22,14 +22,15 @@
 </style>
 <body>
         <!--%=request.getSession().getAttribute("user")%><br-->
-        欢迎学生:${sessionScope.user==null?"null":sessionScope.user.stuName}<br>
+        你好，学生:${sessionScope.user==null?"null":sessionScope.user.stuName}<br>
         <div id="container">
             <div class="box1">
                 <a href="../StudentPage/SearchHomework.jsp"><input type="button" value="查询作业"/></a><br/><br/>
                 <a href="../StudentPage/StudentStatus.jsp"><input type="button" value="学习状态查询"/></a><br/><br/>
                 <a href="../StudentPage/SetValue.jsp"><input type="button" value="教师打分"/></a><br/><br/>
                 <a href="../StudentPage/SetFeedback.jsp"><input type="button" value="反馈问题"/></a><br/><br/>
-                <a href="student.jsp"><input type="button" value="返回主页"/></a><br>
+                <a href="student.jsp"><input type="button" value="返回主页"/></a><br><br>
+                <a href="logout.jsp"><input type="button" value="退出登录"/></a>
             </div>
             <div class="box2">
                 <h1>当前时间</h1>

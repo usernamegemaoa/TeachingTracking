@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored ="false" %>
 <html>
 <head>
     <title>作业成绩提交页面</title>
@@ -93,7 +95,7 @@
     #container .box2{margin-left: 15px;width:685px;height:700px;float:left;background: url("/material/BG_1.jpg");}
 </style>
 <body>
-欢迎教师
+你好，教师：${sessionScope.user==null?"null":sessionScope.user.teaName}<br>
 <div id="container">
     <div class="box1">
         <a href="../TeacherPage/CreateExam.jsp"><input type="button" value="创建试卷"/></a><br><br>
